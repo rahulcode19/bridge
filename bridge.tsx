@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { FC } from "react";
+import { View, Text, Image } from "react-native";
+import { useTheme } from "../../hooks/useTheme";
+import { themeStyles } from "./styles";
+import { IHeaderProps } from "./types";
 
-type HeaderProps = {
-  logoSrc: string;
-  headerName: string;
-};
+const Header: FC<IHeaderProps> = ({ testProp }) => {
+  const styles = themeStyles(useTheme());
 
-const Header: React.FC<HeaderProps> = ({ logoSrc, headerName }) => {
   return (
-    <header>
-      <img src={logoSrc} alt="Logo" />
-      <h1>{headerName}</h1>
-    </header>
+    <View style={styles.container}>
+      <Image source={require("path/to/your/image")} style={styles.logo} />
+      <Text style={styles.headerText}>{testProp}</Text>
+    </View>
   );
 };
 
